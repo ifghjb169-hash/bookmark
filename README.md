@@ -14,7 +14,7 @@ py -3 bookmark_tool.py
 
 Release builds are published from GitHub Actions when a version tag such as `v1.0.0` is pushed:
 
-https://github.com/ifghjb169-hash/bookmark/releases
+https://github.com/secure-artifacts/bookmark/releases
 
 Download the `BookmarkExportTool-<version>.exe` asset from the latest release. Release assets are produced by the workflow in `.github/workflows/release.yml`; do not use manually uploaded files as official builds.
 
@@ -47,11 +47,11 @@ Official release assets are built by GitHub Actions from a `v*` tag and include 
 With GitHub CLI installed, verify the provenance:
 
 ```powershell
-gh attestation verify .\BookmarkExportTool-v1.0.0.exe --repo ifghjb169-hash/bookmark
+gh attestation verify .\BookmarkExportTool-v1.0.1.exe --repo secure-artifacts/bookmark
 ```
 
 You can also compare the downloaded file with the `.sha256` checksum published next to the EXE:
 
 ```powershell
-Get-FileHash .\BookmarkExportTool-v1.0.0.exe -Algorithm SHA256
+Get-FileHash .\BookmarkExportTool-v1.0.1.exe -Algorithm SHA256
 ```
