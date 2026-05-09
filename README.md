@@ -47,11 +47,11 @@ Official release assets are built by GitHub Actions from a `v*` tag and include 
 With GitHub CLI installed, verify the provenance:
 
 ```powershell
-gh attestation verify .\BookmarkExportTool-v1.0.2.exe --repo secure-artifacts/bookmark
+gh attestation verify .\BookmarkExportTool-v1.0.3.exe --repo secure-artifacts/bookmark
 ```
 
 You can also compare the downloaded file with the `.sha256` checksum published next to the EXE:
 
 ```powershell
-Get-FileHash .\BookmarkExportTool-v1.0.2.exe -Algorithm SHA256
+Get-FileHash .\BookmarkExportTool-v1.0.3.exe -Algorithm SHA256
 ```
