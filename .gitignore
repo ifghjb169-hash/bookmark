@@ -6,5 +6,5 @@ dist/
 
 bookmark_tool_settings.json
 google_sheets_oauth_token*.json
+google_sheets_oauth_token*.dat
 *.log
-

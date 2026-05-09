@@ -30,7 +30,7 @@ Download the `BookmarkExportTool-<version>.exe` asset from the latest release. R
 
 ## Google Sheets note
 
-Google Sheets write operations require authorization. Create a Google Cloud OAuth client for a Desktop app, download its JSON file, select it in the app, and sign in when the browser opens. The app caches the resulting token locally in this project folder.
+Google Sheets write operations require authorization. Create a Google Cloud OAuth client for a Desktop app, download its JSON file, select it in the app, and sign in when the browser opens. The app caches the resulting token locally with Windows DPAPI protection for the current Windows user.
 
 Setup checklist:
 
@@ -47,11 +47,11 @@ Official release assets are built by GitHub Actions from a `v*` tag and include 
 With GitHub CLI installed, verify the provenance:
 
 ```powershell
-gh attestation verify .\BookmarkExportTool-v1.0.3.exe --repo secure-artifacts/bookmark
+gh attestation verify .\BookmarkExportTool-v1.0.4.exe --repo secure-artifacts/bookmark
 ```
 
 You can also compare the downloaded file with the `.sha256` checksum published next to the EXE:
 
 ```powershell
-Get-FileHash .\BookmarkExportTool-v1.0.3.exe -Algorithm SHA256
+Get-FileHash .\BookmarkExportTool-v1.0.4.exe -Algorithm SHA256
 ```

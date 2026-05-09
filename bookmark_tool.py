@@ -28,11 +28,12 @@ from tkinter import filedialog, messagebox, ttk
 APP_TITLE = "Bookmarks to CSV / Google Sheets"
 OUTPUT_FOLDER_NAME = "bookmarks"
 GOOGLE_SHEETS_SCOPE = "https://www.googleapis.com/auth/spreadsheets"
-TOKEN_CACHE_FILE = "google_sheets_oauth_token.json"
+TOKEN_CACHE_FILE = "google_sheets_oauth_token.dat"
 SETTINGS_FILE = "bookmark_tool_settings.json"
 ICON_FILE = "app_icon.ico"
 WM_DROPFILES = 0x0233
 GWL_WNDPROC = -4
+CRYPTPROTECT_UI_FORBIDDEN = 0x01
 
 
 LANGUAGES = {
@@ -580,6 +581,13 @@ class ProfileBookmarks:
     rows: list
 
 
+class DATA_BLOB(ctypes.Structure):
+    _fields_ = [
+        ("cbData", wintypes.DWORD),
+        ("pbData", ctypes.POINTER(wintypes.BYTE)),
+    ]
+
+
 def desktop_bookmarks_folder():
     desktop = Path.home() / "Desktop"
     if not desktop.exists():
@@ -630,6 +638,92 @@ def save_settings(settings):
         settings_path().write_text(json.dumps(settings, ensure_ascii=False, indent=2), encoding="utf-8")
     except OSError:
         pass
+
+
+def _bytes_to_blob(data):
+    buffer = ctypes.create_string_buffer(data)
+    blob = DATA_BLOB(len(data), ctypes.cast(buffer, ctypes.POINTER(wintypes.BYTE)))
+    return blob, buffer
+
+
+def _protect_with_windows_dpapi(data):
+    if os.name != "nt":
+        raise RuntimeError("Windows DPAPI is required for OAuth token storage.")
+
+    crypt32 = ctypes.WinDLL("crypt32", use_last_error=True)
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    crypt32.CryptProtectData.argtypes = [
+        ctypes.POINTER(DATA_BLOB),
+        wintypes.LPCWSTR,
+        ctypes.POINTER(DATA_BLOB),
+        ctypes.c_void_p,
+        ctypes.c_void_p,
+        wintypes.DWORD,
+        ctypes.POINTER(DATA_BLOB),
+    ]
+    crypt32.CryptProtectData.restype = wintypes.BOOL
+    kernel32.LocalFree.argtypes = [wintypes.HLOCAL]
+    kernel32.LocalFree.restype = wintypes.HLOCAL
+
+    in_blob, in_buffer = _bytes_to_blob(data)
+    out_blob = DATA_BLOB()
+    try:
+        ok = crypt32.CryptProtectData(
+            ctypes.byref(in_blob),
+            "Bookmark Export Tool OAuth Token",
+            None,
+            None,
+            None,
+            CRYPTPROTECT_UI_FORBIDDEN,
+            ctypes.byref(out_blob),
+        )
+        if not ok:
+            raise ctypes.WinError(ctypes.get_last_error())
+        return ctypes.string_at(out_blob.pbData, out_blob.cbData)
+    finally:
+        _ = in_buffer
+        if out_blob.pbData:
+            kernel32.LocalFree(out_blob.pbData)
+
+
+def _unprotect_with_windows_dpapi(data):
+    if os.name != "nt":
+        raise RuntimeError("Windows DPAPI is required for OAuth token storage.")
+
+    crypt32 = ctypes.WinDLL("crypt32", use_last_error=True)
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    crypt32.CryptUnprotectData.argtypes = [
+        ctypes.POINTER(DATA_BLOB),
+        ctypes.c_void_p,
+        ctypes.POINTER(DATA_BLOB),
+        ctypes.c_void_p,
+        ctypes.c_void_p,
+        wintypes.DWORD,
+        ctypes.POINTER(DATA_BLOB),
+    ]
+    crypt32.CryptUnprotectData.restype = wintypes.BOOL
+    kernel32.LocalFree.argtypes = [wintypes.HLOCAL]
+    kernel32.LocalFree.restype = wintypes.HLOCAL
+
+    in_blob, in_buffer = _bytes_to_blob(data)
+    out_blob = DATA_BLOB()
+    try:
+        ok = crypt32.CryptUnprotectData(
+            ctypes.byref(in_blob),
+            None,
+            None,
+            None,
+            None,
+            CRYPTPROTECT_UI_FORBIDDEN,
+            ctypes.byref(out_blob),
+        )
+        if not ok:
+            raise ctypes.WinError(ctypes.get_last_error())
+        return ctypes.string_at(out_blob.pbData, out_blob.cbData)
+    finally:
+        _ = in_buffer
+        if out_blob.pbData:
+            kernel32.LocalFree(out_blob.pbData)
 
 
 def default_chrome_user_data():
@@ -889,9 +983,33 @@ def parse_spreadsheet_id(sheet_url):
     return ""
 
 
-def token_cache_path(client_id):
-    digest = hashlib.sha256(client_id.encode("utf-8")).hexdigest()[:12]
-    return app_storage_dir() / f"google_sheets_oauth_token_{digest}.json"
+def token_cache_path():
+    return app_storage_dir() / TOKEN_CACHE_FILE
+
+
+def remove_legacy_plaintext_token_caches():
+    for path in app_storage_dir().glob("google_sheets_oauth_token*.json"):
+        try:
+            path.unlink()
+        except OSError:
+            pass
+
+
+def load_cached_oauth_token(path):
+    if not path.exists():
+        return {}
+    try:
+        payload = _unprotect_with_windows_dpapi(path.read_bytes())
+        data = json.loads(payload.decode("utf-8"))
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError, RuntimeError, json.JSONDecodeError):
+        return {}
+
+
+def save_cached_oauth_token(path, token):
+    payload = json.dumps(token, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    encrypted = _protect_with_windows_dpapi(payload)
+    path.write_bytes(encrypted)
 
 
 def load_oauth_client(path):
@@ -1038,13 +1156,9 @@ def run_oauth_flow(client):
 
 def get_google_access_token(oauth_client_path):
     client = load_oauth_client(oauth_client_path)
-    cache_path = token_cache_path(client["client_id"])
-    token = {}
-    if cache_path.exists():
-        try:
-            token = json.loads(cache_path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            token = {}
+    cache_path = token_cache_path()
+    remove_legacy_plaintext_token_caches()
+    token = load_cached_oauth_token(cache_path)
     if token.get("client_id") != client["client_id"]:
         token = {}
     if not is_token_valid(token):
@@ -1053,7 +1167,7 @@ def get_google_access_token(oauth_client_path):
         except RuntimeError:
             refreshed = None
         token = refreshed or run_oauth_flow(client)
-        cache_path.write_text(json.dumps(token, ensure_ascii=False, indent=2), encoding="utf-8")
+        save_cached_oauth_token(cache_path, token)
     return token["access_token"]
 
 
