@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+
+build/
+dist/
+
+bookmark_tool_settings.json
+google_sheets_oauth_token*.json
+*.log
+
