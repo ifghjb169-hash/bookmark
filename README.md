@@ -22,11 +22,11 @@ Download the `BookmarkExportTool-<version>.exe` asset from the latest release. R
 
 - Convert one or more Chrome bookmark HTML exports into separate CSV files.
 - Drag `.html` or `.htm` bookmark files directly into the app window to add them.
-- Scan Chrome user profile folders such as `C:\Users\tenp\AppData\Local\Google\Chrome\User Data\Profile 3`.
+- Scan Google Chrome or Microsoft Edge user profile folders such as `C:\Users\tenp\AppData\Local\Google\Chrome\User Data\Profile 3` or `C:\Users\tenp\AppData\Local\Microsoft\Edge\User Data\Default`.
 - Select which scanned Chrome profiles to export, then export one CSV per selected profile or merge selected profiles into one CSV with a `profile` column.
 - Save output files to `Desktop\bookmarks` by default, or choose any other output folder from the top bar.
 - UI language dropdown: Chinese, English, Vietnamese, Burmese, Hindi, Filipino, Portuguese, Spanish.
-- Google Sheets tab accepts a Sheet link and an OAuth client JSON file, remembers both paths, can open the sheet in your browser, lets you choose profiles, then writes each selected Chrome profile into its own sheet tab.
+- Google Sheets tab accepts a Sheet link and an OAuth client JSON file, remembers both paths, can open the sheet in your browser, lets you choose Chrome or Edge profiles, then writes each selected profile into its own sheet tab.
 
 ## Google Sheets note
 

@@ -47,13 +47,19 @@ LANGUAGES = {
     "es": "Español",
 }
 
+BROWSER_CODES = ("chrome", "edge")
+BROWSER_LABEL_KEYS = {
+    "chrome": "browser_chrome",
+    "edge": "browser_edge",
+}
+
 
 TEXT = {
     "zh": {
         "app_title": "书签导出工具",
         "language": "界面语言",
         "tab_html": "HTML 转 CSV",
-        "tab_profiles": "扫描 Chrome 用户",
+        "tab_profiles": "扫描浏览器用户",
         "tab_sheets": "导出到 Google 表格",
         "output_folder": "输出文件夹",
         "desktop_bookmarks": "桌面 bookmarks 文件夹",
@@ -61,7 +67,10 @@ TEXT = {
         "clear": "清空",
         "convert_html": "转换为 CSV",
         "html_hint": "可一次选择多个 Chrome 导出的书签 HTML 文件，或直接拖到下方空白列表区域；每个 HTML 会生成一个 CSV。",
-        "chrome_base": "Chrome 用户资料目录",
+        "browser": "浏览器",
+        "browser_chrome": "Google Chrome",
+        "browser_edge": "Microsoft Edge",
+        "chrome_base": "浏览器用户资料目录",
         "browse": "浏览",
         "scan": "扫描",
         "convert_profiles": "导出 CSV",
@@ -78,7 +87,7 @@ TEXT = {
         "oauth_client": "OAuth 客户端 JSON",
         "sheet_name": "Sheet 名称",
         "upload": "上传到 Google 表格",
-        "sheets_hint": "程序会从 Chrome 用户资料读取 Bookmarks，通过 OAuth 写入 Google 表格。每个 Chrome 用户会自动创建一个同名分表，并把数据写入对应分表。",
+        "sheets_hint": "程序会从所选浏览器用户资料读取 Bookmarks，通过 OAuth 写入 Google 表格。每个浏览器用户会自动创建一个同名分表，并把数据写入对应分表。",
         "status_ready": "准备好了。",
         "status_working": "正在处理...",
         "status_done": "完成。",
@@ -114,7 +123,7 @@ TEXT = {
         "app_title": "Bookmark Export Tool",
         "language": "Language",
         "tab_html": "HTML to CSV",
-        "tab_profiles": "Scan Chrome Profiles",
+        "tab_profiles": "Scan Browser Profiles",
         "tab_sheets": "Export to Google Sheets",
         "output_folder": "Output folder",
         "desktop_bookmarks": "Desktop bookmarks folder",
@@ -122,7 +131,10 @@ TEXT = {
         "clear": "Clear",
         "convert_html": "Convert to CSV",
         "html_hint": "Select one or more Chrome bookmark HTML exports, or drop them into the blank list area below. Each HTML file becomes one CSV.",
-        "chrome_base": "Chrome user data folder",
+        "browser": "Browser",
+        "browser_chrome": "Google Chrome",
+        "browser_edge": "Microsoft Edge",
+        "chrome_base": "Browser user data folder",
         "browse": "Browse",
         "scan": "Scan",
         "convert_profiles": "Export CSV",
@@ -139,7 +151,7 @@ TEXT = {
         "oauth_client": "OAuth client JSON",
         "sheet_name": "Sheet name",
         "upload": "Upload to Google Sheets",
-        "sheets_hint": "The app reads Chrome Bookmarks and writes to Google Sheets with OAuth. Each Chrome profile gets a separate sheet tab named after the profile.",
+        "sheets_hint": "The app reads Bookmarks from the selected browser and writes to Google Sheets with OAuth. Each browser profile gets a separate sheet tab named after the profile.",
         "status_ready": "Ready.",
         "status_working": "Working...",
         "status_done": "Done.",
@@ -175,7 +187,7 @@ TEXT = {
         "app_title": "Công cụ xuất dấu trang",
         "language": "Ngôn ngữ",
         "tab_html": "HTML sang CSV",
-        "tab_profiles": "Quét hồ sơ Chrome",
+        "tab_profiles": "Quét hồ sơ trình duyệt",
         "tab_sheets": "Xuất sang Google Sheets",
         "output_folder": "Thư mục xuất",
         "desktop_bookmarks": "Thư mục bookmarks trên Desktop",
@@ -183,7 +195,10 @@ TEXT = {
         "clear": "Xóa",
         "convert_html": "Chuyển sang CSV",
         "html_hint": "Chọn một hoặc nhiều tệp HTML dấu trang Chrome. Mỗi tệp tạo một CSV.",
-        "chrome_base": "Thư mục dữ liệu người dùng Chrome",
+        "browser": "Trình duyệt",
+        "browser_chrome": "Google Chrome",
+        "browser_edge": "Microsoft Edge",
+        "chrome_base": "Thư mục dữ liệu người dùng trình duyệt",
         "browse": "Chọn",
         "scan": "Quét",
         "convert_profiles": "Xuất CSV",
@@ -200,7 +215,7 @@ TEXT = {
         "oauth_client": "OAuth client JSON",
         "sheet_name": "Tên sheet",
         "upload": "Tải lên Google Sheets",
-        "sheets_hint": "Ứng dụng đọc Bookmarks của Chrome và thêm vào Google Sheets. Lưu ý: ghi vào Google Sheets thường cần OAuth hoặc service account; chỉ API key có thể bị Google từ chối.",
+        "sheets_hint": "Ứng dụng đọc Bookmarks từ trình duyệt đã chọn và thêm vào Google Sheets. Lưu ý: ghi vào Google Sheets thường cần OAuth hoặc service account; chỉ API key có thể bị Google từ chối.",
         "status_ready": "Sẵn sàng.",
         "status_working": "Đang xử lý...",
         "status_done": "Hoàn tất.",
@@ -236,7 +251,7 @@ TEXT = {
         "app_title": "Bookmark ထုတ်ရန်ကိရိယာ",
         "language": "ဘာသာစကား",
         "tab_html": "HTML မှ CSV",
-        "tab_profiles": "Chrome ပရိုဖိုင် စစ်ဆေးရန်",
+        "tab_profiles": "Browser ပရိုဖိုင် စစ်ဆေးရန်",
         "tab_sheets": "Google Sheets သို့ ထုတ်ရန်",
         "output_folder": "ထုတ်မည့်ဖိုင်တွဲ",
         "desktop_bookmarks": "Desktop bookmarks ဖိုင်တွဲ",
@@ -244,7 +259,10 @@ TEXT = {
         "clear": "ရှင်းရန်",
         "convert_html": "CSV သို့ပြောင်းရန်",
         "html_hint": "Chrome မှ export လုပ်ထားသော bookmark HTML ဖိုင်များကို ရွေးပါ။ HTML တစ်ခုစီ CSV တစ်ခုဖြစ်မည်။",
-        "chrome_base": "Chrome user data ဖိုင်တွဲ",
+        "browser": "Browser",
+        "browser_chrome": "Google Chrome",
+        "browser_edge": "Microsoft Edge",
+        "chrome_base": "Browser user data ဖိုင်တွဲ",
         "browse": "ရွေးရန်",
         "scan": "စစ်ရန်",
         "convert_profiles": "CSV ထုတ်ရန်",
@@ -261,7 +279,7 @@ TEXT = {
         "oauth_client": "OAuth client JSON",
         "sheet_name": "Sheet အမည်",
         "upload": "Google Sheets သို့ တင်ရန်",
-        "sheets_hint": "အက်ပ်သည် Chrome Bookmarks ကိုဖတ်ပြီး Google Sheets ထဲသို့ ထည့်ပါမည်။ သတိပြုရန် - Google Sheets တွင်ရေးရန် OAuth သို့မဟုတ် service account လိုလေ့ရှိပြီး API key သက်သက်ကို Google ငြင်းနိုင်သည်။",
+        "sheets_hint": "အက်ပ်သည် ရွေးထားသော browser မှ Bookmarks ကိုဖတ်ပြီး Google Sheets ထဲသို့ ထည့်ပါမည်။ သတိပြုရန် - Google Sheets တွင်ရေးရန် OAuth သို့မဟုတ် service account လိုလေ့ရှိပြီး API key သက်သက်ကို Google ငြင်းနိုင်သည်။",
         "status_ready": "အသင့်ဖြစ်ပါပြီ။",
         "status_working": "လုပ်ဆောင်နေသည်...",
         "status_done": "ပြီးပါပြီ။",
@@ -297,7 +315,7 @@ TEXT = {
         "app_title": "बुकमार्क निर्यात उपकरण",
         "language": "भाषा",
         "tab_html": "HTML से CSV",
-        "tab_profiles": "Chrome प्रोफाइल स्कैन",
+        "tab_profiles": "ब्राउज़र प्रोफाइल स्कैन",
         "tab_sheets": "Google Sheets में निर्यात",
         "output_folder": "आउटपुट फ़ोल्डर",
         "desktop_bookmarks": "Desktop bookmarks फ़ोल्डर",
@@ -305,7 +323,10 @@ TEXT = {
         "clear": "साफ़ करें",
         "convert_html": "CSV में बदलें",
         "html_hint": "Chrome से निर्यात की गई एक या अधिक bookmark HTML फ़ाइलें चुनें। हर HTML से एक CSV बनेगा।",
-        "chrome_base": "Chrome user data फ़ोल्डर",
+        "browser": "ब्राउज़र",
+        "browser_chrome": "Google Chrome",
+        "browser_edge": "Microsoft Edge",
+        "chrome_base": "ब्राउज़र user data फ़ोल्डर",
         "browse": "ब्राउज़",
         "scan": "स्कैन",
         "convert_profiles": "CSV निर्यात",
@@ -322,7 +343,7 @@ TEXT = {
         "oauth_client": "OAuth client JSON",
         "sheet_name": "Sheet नाम",
         "upload": "Google Sheets में अपलोड",
-        "sheets_hint": "ऐप Chrome Bookmarks पढ़कर Google Sheets में जोड़ता है। ध्यान दें: Google Sheets में लिखने के लिए आमतौर पर OAuth या service account चाहिए; केवल API key को Google अस्वीकार कर सकता है।",
+        "sheets_hint": "ऐप चुने गए ब्राउज़र के Bookmarks पढ़कर Google Sheets में जोड़ता है। ध्यान दें: Google Sheets में लिखने के लिए आमतौर पर OAuth या service account चाहिए; केवल API key को Google अस्वीकार कर सकता है।",
         "status_ready": "तैयार।",
         "status_working": "काम चल रहा है...",
         "status_done": "पूरा हुआ।",
@@ -358,7 +379,7 @@ TEXT = {
         "app_title": "Bookmark Export Tool",
         "language": "Wika",
         "tab_html": "HTML papuntang CSV",
-        "tab_profiles": "I-scan ang Chrome Profiles",
+        "tab_profiles": "I-scan ang Browser Profiles",
         "tab_sheets": "I-export sa Google Sheets",
         "output_folder": "Output folder",
         "desktop_bookmarks": "Desktop bookmarks folder",
@@ -366,7 +387,10 @@ TEXT = {
         "clear": "I-clear",
         "convert_html": "Gawing CSV",
         "html_hint": "Pumili ng isa o higit pang Chrome bookmark HTML exports. Bawat HTML ay magiging isang CSV.",
-        "chrome_base": "Chrome user data folder",
+        "browser": "Browser",
+        "browser_chrome": "Google Chrome",
+        "browser_edge": "Microsoft Edge",
+        "chrome_base": "Browser user data folder",
         "browse": "Browse",
         "scan": "Scan",
         "convert_profiles": "I-export CSV",
@@ -383,7 +407,7 @@ TEXT = {
         "oauth_client": "OAuth client JSON",
         "sheet_name": "Sheet name",
         "upload": "I-upload sa Google Sheets",
-        "sheets_hint": "Babasahin ng app ang Chrome Bookmarks at idaragdag sa Google Sheets. Paalala: kadalasang kailangan ng OAuth o service account para magsulat sa Google Sheets; maaaring tanggihan ng Google ang API key lang.",
+        "sheets_hint": "Babasahin ng app ang Bookmarks mula sa napiling browser at idaragdag sa Google Sheets. Paalala: kadalasang kailangan ng OAuth o service account para magsulat sa Google Sheets; maaaring tanggihan ng Google ang API key lang.",
         "status_ready": "Handa na.",
         "status_working": "Ginagawa...",
         "status_done": "Tapos na.",
@@ -419,7 +443,7 @@ TEXT = {
         "app_title": "Ferramenta de exportação de favoritos",
         "language": "Idioma",
         "tab_html": "HTML para CSV",
-        "tab_profiles": "Ler perfis do Chrome",
+        "tab_profiles": "Ler perfis do navegador",
         "tab_sheets": "Exportar para Google Sheets",
         "output_folder": "Pasta de saída",
         "desktop_bookmarks": "Pasta bookmarks no Desktop",
@@ -427,7 +451,10 @@ TEXT = {
         "clear": "Limpar",
         "convert_html": "Converter para CSV",
         "html_hint": "Selecione um ou mais HTMLs de favoritos exportados do Chrome. Cada HTML gera um CSV.",
-        "chrome_base": "Pasta de dados do Chrome",
+        "browser": "Navegador",
+        "browser_chrome": "Google Chrome",
+        "browser_edge": "Microsoft Edge",
+        "chrome_base": "Pasta de dados do navegador",
         "browse": "Procurar",
         "scan": "Ler",
         "convert_profiles": "Exportar CSV",
@@ -444,7 +471,7 @@ TEXT = {
         "oauth_client": "OAuth client JSON",
         "sheet_name": "Nome da sheet",
         "upload": "Enviar para Google Sheets",
-        "sheets_hint": "O app lê os Bookmarks do Chrome e adiciona ao Google Sheets. Observação: escrever no Google Sheets normalmente exige OAuth ou service account; apenas API key pode ser rejeitada pelo Google.",
+        "sheets_hint": "O app lê os Bookmarks do navegador selecionado e adiciona ao Google Sheets. Observação: escrever no Google Sheets normalmente exige OAuth ou service account; apenas API key pode ser rejeitada pelo Google.",
         "status_ready": "Pronto.",
         "status_working": "Processando...",
         "status_done": "Concluído.",
@@ -480,7 +507,7 @@ TEXT = {
         "app_title": "Herramienta de exportación de marcadores",
         "language": "Idioma",
         "tab_html": "HTML a CSV",
-        "tab_profiles": "Escanear perfiles de Chrome",
+        "tab_profiles": "Escanear perfiles del navegador",
         "tab_sheets": "Exportar a Google Sheets",
         "output_folder": "Carpeta de salida",
         "desktop_bookmarks": "Carpeta bookmarks en el Escritorio",
@@ -488,7 +515,10 @@ TEXT = {
         "clear": "Limpiar",
         "convert_html": "Convertir a CSV",
         "html_hint": "Selecciona uno o más HTML de marcadores exportados desde Chrome. Cada HTML crea un CSV.",
-        "chrome_base": "Carpeta de datos de Chrome",
+        "browser": "Navegador",
+        "browser_chrome": "Google Chrome",
+        "browser_edge": "Microsoft Edge",
+        "chrome_base": "Carpeta de datos del navegador",
         "browse": "Examinar",
         "scan": "Escanear",
         "convert_profiles": "Exportar CSV",
@@ -505,7 +535,7 @@ TEXT = {
         "oauth_client": "OAuth client JSON",
         "sheet_name": "Nombre de sheet",
         "upload": "Subir a Google Sheets",
-        "sheets_hint": "La app lee Bookmarks de Chrome y los agrega a Google Sheets. Nota: escribir en Google Sheets suele requerir OAuth o service account; solo una API key puede ser rechazada por Google.",
+        "sheets_hint": "La app lee Bookmarks del navegador seleccionado y los agrega a Google Sheets. Nota: escribir en Google Sheets suele requerir OAuth o service account; solo una API key puede ser rechazada por Google.",
         "status_ready": "Listo.",
         "status_working": "Procesando...",
         "status_done": "Terminado.",
@@ -727,10 +757,22 @@ def _unprotect_with_windows_dpapi(data):
 
 
 def default_chrome_user_data():
+    return default_browser_user_data("chrome")
+
+
+def default_edge_user_data():
+    return default_browser_user_data("edge")
+
+
+def default_browser_user_data(browser):
     local = os.environ.get("LOCALAPPDATA")
+    parts = {
+        "chrome": ("Google", "Chrome"),
+        "edge": ("Microsoft", "Edge"),
+    }.get(browser, ("Google", "Chrome"))
     if local:
-        return Path(local) / "Google" / "Chrome" / "User Data"
-    return Path.home() / "AppData" / "Local" / "Google" / "Chrome" / "User Data"
+        return Path(local) / parts[0] / parts[1] / "User Data"
+    return Path.home() / "AppData" / "Local" / parts[0] / parts[1] / "User Data"
 
 
 def safe_filename(name):
@@ -927,8 +969,8 @@ def read_profile_display_names(chrome_user_data):
     return names
 
 
-def find_chrome_bookmark_files(chrome_user_data):
-    base = Path(chrome_user_data)
+def find_browser_bookmark_files(user_data_folder, browser="chrome"):
+    base = Path(user_data_folder)
     if not base.exists():
         return []
     display_names = read_profile_display_names(base)
@@ -950,6 +992,10 @@ def find_chrome_bookmark_files(chrome_user_data):
         found.append(ProfileBookmarks(profile_id=profile_id, display_name=display_name, path=bookmark_path, rows=rows))
     found.sort(key=lambda item: item.display_name.lower())
     return found
+
+
+def find_chrome_bookmark_files(chrome_user_data):
+    return find_browser_bookmark_files(chrome_user_data, "chrome")
 
 
 def copy_locked_bookmarks(path):
@@ -1279,10 +1325,13 @@ class BookmarkApp(tk.Tk):
         self.lang = "zh"
         self.html_files = []
         self.profiles = []
+        self.profiles_base_path = ""
+        self.profiles_browser = ""
         self.selected_profile_ids = set()
         self.profile_item_ids = {}
         self.sheet_profiles = []
         self.sheet_profiles_base_path = ""
+        self.sheet_profiles_browser = ""
         self.selected_sheet_profile_ids = set()
         self.sheet_profile_item_ids = {}
         self.checkbox_images = {}
@@ -1296,8 +1345,20 @@ class BookmarkApp(tk.Tk):
         self.mode_var = tk.StringVar(value="separate")
         self.language_var = tk.StringVar(value=LANGUAGES[self.lang])
         self.output_folder_var = tk.StringVar(value=str(desktop_bookmarks_folder()))
-        self.chrome_base_var = tk.StringVar(value=str(default_chrome_user_data()))
-        self.sheet_base_var = tk.StringVar(value=str(default_chrome_user_data()))
+        self.profile_browser = self.valid_browser_code(self.settings.get("profile_browser", "chrome"))
+        self.sheet_browser = self.valid_browser_code(self.settings.get("sheet_browser", "chrome"))
+        self.profile_base_paths = {
+            code: self.settings.get(f"profile_{code}_base", str(default_browser_user_data(code)))
+            for code in BROWSER_CODES
+        }
+        self.sheet_base_paths = {
+            code: self.settings.get(f"sheet_{code}_base", str(default_browser_user_data(code)))
+            for code in BROWSER_CODES
+        }
+        self.profile_browser_var = tk.StringVar(value=self.browser_label(self.profile_browser))
+        self.sheet_browser_var = tk.StringVar(value=self.browser_label(self.sheet_browser))
+        self.chrome_base_var = tk.StringVar(value=self.profile_base_paths[self.profile_browser])
+        self.sheet_base_var = tk.StringVar(value=self.sheet_base_paths[self.sheet_browser])
         self.sheet_url_var = tk.StringVar(value=self.settings.get("sheet_url", ""))
         self.oauth_client_var = tk.StringVar(value=self.settings.get("oauth_client_path", ""))
         self.status_var = tk.StringVar(value=self.t("status_ready"))
@@ -1317,6 +1378,44 @@ class BookmarkApp(tk.Tk):
 
     def tr(self, key, **values):
         return self.t(key).format(**values)
+
+    def valid_browser_code(self, code):
+        return code if code in BROWSER_CODES else "chrome"
+
+    def browser_label(self, code):
+        return self.t(BROWSER_LABEL_KEYS.get(self.valid_browser_code(code), "browser_chrome"))
+
+    def browser_values(self):
+        return [self.browser_label(code) for code in BROWSER_CODES]
+
+    def browser_code_from_label(self, label):
+        for code in BROWSER_CODES:
+            if label == self.browser_label(code):
+                return code
+        return "chrome"
+
+    def refresh_browser_combo_labels(self):
+        values = self.browser_values()
+        if hasattr(self, "profile_browser_combo"):
+            self.profile_browser_combo.configure(values=values)
+            self.profile_browser_var.set(self.browser_label(self.profile_browser))
+        if hasattr(self, "sheet_browser_combo"):
+            self.sheet_browser_combo.configure(values=values)
+            self.sheet_browser_var.set(self.browser_label(self.sheet_browser))
+
+    def remember_profile_base_path(self):
+        self.profile_base_paths[self.profile_browser] = self.chrome_base_var.get().strip()
+
+    def remember_sheet_base_path(self):
+        self.sheet_base_paths[self.sheet_browser] = self.sheet_base_var.get().strip()
+
+    def current_profile_base_path(self):
+        self.remember_profile_base_path()
+        return self.profile_base_paths[self.profile_browser]
+
+    def current_sheet_base_path(self):
+        self.remember_sheet_base_path()
+        return self.sheet_base_paths[self.sheet_browser]
 
     def register(self, name, widget, key=None):
         self.widgets[name] = (widget, key)
@@ -1439,6 +1538,20 @@ class BookmarkApp(tk.Tk):
         panel = ttk.Frame(self.profile_tab, style="Panel.TFrame", padding=14)
         panel.pack(fill="both", expand=True)
 
+        browser_row = ttk.Frame(panel, style="Panel.TFrame")
+        browser_row.pack(fill="x", pady=(0, 8))
+        self.profile_browser_label = self.register("profile_browser_label", ttk.Label(browser_row, style="Title.TLabel"), "browser")
+        self.profile_browser_label.pack(side="left", padx=(0, 8))
+        self.profile_browser_combo = ttk.Combobox(
+            browser_row,
+            textvariable=self.profile_browser_var,
+            values=self.browser_values(),
+            state="readonly",
+            width=24,
+        )
+        self.profile_browser_combo.pack(side="left")
+        self.profile_browser_combo.bind("<<ComboboxSelected>>", self.on_profile_browser_change)
+
         base_row = ttk.Frame(panel, style="Panel.TFrame")
         base_row.pack(fill="x", pady=(0, 8))
         self.chrome_base_label = self.register("chrome_base_label", ttk.Label(base_row, style="Title.TLabel"), "chrome_base")
@@ -1491,6 +1604,20 @@ class BookmarkApp(tk.Tk):
 
         self.sheet_hint = self.register("sheet_hint", ttk.Label(panel, style="Hint.TLabel", wraplength=820), "sheets_hint")
         self.sheet_hint.pack(anchor="w", fill="x", pady=(0, 12))
+
+        sheet_browser_row = ttk.Frame(panel, style="Panel.TFrame")
+        sheet_browser_row.pack(fill="x", pady=(0, 8))
+        self.sheet_browser_label = self.register("sheet_browser_label", ttk.Label(sheet_browser_row, style="Title.TLabel"), "browser")
+        self.sheet_browser_label.pack(side="left", padx=(0, 8))
+        self.sheet_browser_combo = ttk.Combobox(
+            sheet_browser_row,
+            textvariable=self.sheet_browser_var,
+            values=self.browser_values(),
+            state="readonly",
+            width=24,
+        )
+        self.sheet_browser_combo.pack(side="left")
+        self.sheet_browser_combo.bind("<<ComboboxSelected>>", self.on_sheet_browser_change)
 
         self.sheet_base_label = self.register("sheet_base_label", ttk.Label(panel, style="Title.TLabel"), "chrome_base")
         self.sheet_base_label.pack(anchor="w")
@@ -1552,6 +1679,7 @@ class BookmarkApp(tk.Tk):
         for widget, key in self.widgets.values():
             if key:
                 widget.configure(text=self.t(key))
+        self.refresh_browser_combo_labels()
         self.mode_separate.configure(text=self.t("mode_separate"))
         self.mode_merged.configure(text=self.t("mode_merged"))
         self.profile_tree.heading("#0", text=self.t("selected"))
@@ -1602,8 +1730,15 @@ class BookmarkApp(tk.Tk):
             self.disable_file_drop()
 
     def save_current_settings(self):
+        self.remember_profile_base_path()
+        self.remember_sheet_base_path()
         self.settings["sheet_url"] = self.sheet_url_var.get().strip()
         self.settings["oauth_client_path"] = self.oauth_client_var.get().strip()
+        self.settings["profile_browser"] = self.profile_browser
+        self.settings["sheet_browser"] = self.sheet_browser
+        for code in BROWSER_CODES:
+            self.settings[f"profile_{code}_base"] = self.profile_base_paths.get(code, "")
+            self.settings[f"sheet_{code}_base"] = self.sheet_base_paths.get(code, "")
         save_settings(self.settings)
 
     def enable_file_drop(self):
@@ -1819,6 +1954,28 @@ class BookmarkApp(tk.Tk):
         if folder:
             var.set(folder)
 
+    def on_profile_browser_change(self, _event=None):
+        self.remember_profile_base_path()
+        self.profile_browser = self.browser_code_from_label(self.profile_browser_var.get())
+        self.chrome_base_var.set(self.profile_base_paths.get(self.profile_browser, str(default_browser_user_data(self.profile_browser))))
+        self.profiles = []
+        self.profiles_base_path = ""
+        self.profiles_browser = ""
+        self.selected_profile_ids.clear()
+        self.refresh_profile_tree()
+        self.save_current_settings()
+
+    def on_sheet_browser_change(self, _event=None):
+        self.remember_sheet_base_path()
+        self.sheet_browser = self.browser_code_from_label(self.sheet_browser_var.get())
+        self.sheet_base_var.set(self.sheet_base_paths.get(self.sheet_browser, str(default_browser_user_data(self.sheet_browser))))
+        self.sheet_profiles = []
+        self.sheet_profiles_base_path = ""
+        self.sheet_profiles_browser = ""
+        self.selected_sheet_profile_ids.clear()
+        self.refresh_sheet_profile_tree()
+        self.save_current_settings()
+
     def browse_oauth_client(self):
         file = filedialog.askopenfilename(
             title=self.t("choose_oauth_client"),
@@ -1844,17 +2001,22 @@ class BookmarkApp(tk.Tk):
 
     def scan_profiles(self):
         def work():
-            return find_chrome_bookmark_files(self.chrome_base_var.get())
+            base_path = self.current_profile_base_path()
+            browser = self.profile_browser
+            return base_path, browser, find_browser_bookmark_files(base_path, browser)
 
         def done(result, error):
             self.set_busy(False)
             if error:
                 messagebox.showerror(self.t("error"), str(error))
                 return
-            self.profiles = result
-            self.selected_profile_ids = {profile.profile_id for profile in result}
+            base_path, browser, profiles = result
+            self.profiles_base_path = base_path
+            self.profiles_browser = browser
+            self.profiles = profiles
+            self.selected_profile_ids = {profile.profile_id for profile in profiles}
             self.refresh_profile_tree()
-            if not result:
+            if not profiles:
                 messagebox.showwarning(self.t("warning"), self.t("no_profiles"))
 
         self.run_worker(work, done)
@@ -1906,16 +2068,18 @@ class BookmarkApp(tk.Tk):
 
     def scan_sheet_profiles(self):
         def work():
-            base_path = self.sheet_base_var.get()
-            return base_path, find_chrome_bookmark_files(base_path)
+            base_path = self.current_sheet_base_path()
+            browser = self.sheet_browser
+            return base_path, browser, find_browser_bookmark_files(base_path, browser)
 
         def done(result, error):
             self.set_busy(False)
             if error:
                 messagebox.showerror(self.t("error"), str(error))
                 return
-            base_path, profiles = result
+            base_path, browser, profiles = result
             self.sheet_profiles_base_path = base_path
+            self.sheet_profiles_browser = browser
             self.sheet_profiles = profiles
             self.selected_sheet_profile_ids = {profile.profile_id for profile in profiles}
             self.refresh_sheet_profile_tree()
@@ -1969,18 +2133,24 @@ class BookmarkApp(tk.Tk):
         self.selected_sheet_profile_ids.clear()
         self.refresh_sheet_profile_tree()
 
-    def ensure_profiles(self, base_path):
-        profiles = find_chrome_bookmark_files(base_path)
+    def ensure_profiles(self, base_path, browser):
+        profiles = find_browser_bookmark_files(base_path, browser)
         if not profiles:
             raise RuntimeError(self.t("no_profiles"))
         return profiles
 
     def selected_sheet_profiles_or_all_from_scan(self):
-        base_path = self.sheet_base_var.get()
-        if not self.sheet_profiles or self.sheet_profiles_base_path != base_path:
-            profiles = self.ensure_profiles(base_path)
+        base_path = self.current_sheet_base_path()
+        browser = self.sheet_browser
+        if (
+            not self.sheet_profiles
+            or self.sheet_profiles_base_path != base_path
+            or self.sheet_profiles_browser != browser
+        ):
+            profiles = self.ensure_profiles(base_path, browser)
             self.sheet_profiles = profiles
             self.sheet_profiles_base_path = base_path
+            self.sheet_profiles_browser = browser
             self.selected_sheet_profile_ids = {profile.profile_id for profile in profiles}
             return profiles
         selected = [
@@ -1992,9 +2162,17 @@ class BookmarkApp(tk.Tk):
         return selected
 
     def selected_profiles_or_all_from_scan(self):
-        if not self.profiles:
-            profiles = self.ensure_profiles(self.chrome_base_var.get())
+        base_path = self.current_profile_base_path()
+        browser = self.profile_browser
+        if (
+            not self.profiles
+            or self.profiles_base_path != base_path
+            or self.profiles_browser != browser
+        ):
+            profiles = self.ensure_profiles(base_path, browser)
             self.profiles = profiles
+            self.profiles_base_path = base_path
+            self.profiles_browser = browser
             self.selected_profile_ids = {profile.profile_id for profile in profiles}
             return profiles
         selected = [
@@ -2013,8 +2191,15 @@ class BookmarkApp(tk.Tk):
             return
 
         def work():
-            all_profiles = self.profiles or self.ensure_profiles(self.chrome_base_var.get())
-            if self.profiles:
+            base_path = self.current_profile_base_path()
+            browser = self.profile_browser
+            use_scanned_profiles = (
+                bool(self.profiles)
+                and self.profiles_base_path == base_path
+                and self.profiles_browser == browser
+            )
+            all_profiles = self.profiles if use_scanned_profiles else self.ensure_profiles(base_path, browser)
+            if use_scanned_profiles:
                 profiles = [
                     profile for profile in all_profiles
                     if profile.profile_id in self.selected_profile_ids
@@ -2027,25 +2212,26 @@ class BookmarkApp(tk.Tk):
                 rows = []
                 for profile in profiles:
                     rows.extend(profile.rows)
-                destination = unique_path(output, "all_chrome_bookmarks.csv")
+                destination = unique_path(output, f"all_{browser}_bookmarks.csv")
                 write_csv(destination, rows)
-                return "merged", destination, all_profiles, len(profiles)
+                return "merged", destination, all_profiles, len(profiles), base_path, browser, use_scanned_profiles
             count = 0
             for profile in profiles:
                 destination = unique_path(output, safe_filename(profile.display_name) + ".csv")
                 write_csv(destination, profile.rows)
                 count += 1
-            return "separate", output, all_profiles, count
+            return "separate", output, all_profiles, count, base_path, browser, use_scanned_profiles
 
         def done(result, error):
             self.set_busy(False)
             if error:
                 messagebox.showerror(self.t("error"), str(error))
                 return
-            mode, target, all_profiles, exported_count = result
-            had_profiles = bool(self.profiles)
+            mode, target, all_profiles, exported_count, base_path, browser, used_scanned_profiles = result
             self.profiles = all_profiles
-            if not had_profiles:
+            self.profiles_base_path = base_path
+            self.profiles_browser = browser
+            if not used_scanned_profiles:
                 self.selected_profile_ids = {profile.profile_id for profile in all_profiles}
             self.refresh_profile_tree()
             self.status_var.set(self.t("status_done"))
@@ -2068,9 +2254,14 @@ class BookmarkApp(tk.Tk):
         self.save_current_settings()
 
         def work():
-            base_path = self.sheet_base_var.get()
-            use_scanned_profiles = bool(self.sheet_profiles and self.sheet_profiles_base_path == base_path)
-            all_profiles = self.sheet_profiles if use_scanned_profiles else self.ensure_profiles(base_path)
+            base_path = self.current_sheet_base_path()
+            browser = self.sheet_browser
+            use_scanned_profiles = bool(
+                self.sheet_profiles
+                and self.sheet_profiles_base_path == base_path
+                and self.sheet_profiles_browser == browser
+            )
+            all_profiles = self.sheet_profiles if use_scanned_profiles else self.ensure_profiles(base_path, browser)
             if use_scanned_profiles:
                 profiles = [
                     profile for profile in all_profiles
@@ -2083,7 +2274,7 @@ class BookmarkApp(tk.Tk):
             if not any(profile.rows for profile in profiles):
                 raise RuntimeError(self.t("no_profiles"))
             uploaded_profiles, rows = upload_profiles_to_google_sheets(sheet_url, oauth_client, profiles)
-            return uploaded_profiles, rows, all_profiles, use_scanned_profiles, base_path
+            return uploaded_profiles, rows, all_profiles, use_scanned_profiles, base_path, browser
 
         def done(result, error):
             self.set_busy(False)
@@ -2094,9 +2285,10 @@ class BookmarkApp(tk.Tk):
                     messagebox.showerror(self.t("error"), str(error))
                 return
             self.status_var.set(self.t("status_done"))
-            profiles, rows, all_profiles, used_scanned_profiles, base_path = result
+            profiles, rows, all_profiles, used_scanned_profiles, base_path, browser = result
             self.sheet_profiles = all_profiles
             self.sheet_profiles_base_path = base_path
+            self.sheet_profiles_browser = browser
             if not used_scanned_profiles:
                 self.selected_sheet_profile_ids = {profile.profile_id for profile in all_profiles}
             self.refresh_sheet_profile_tree()
