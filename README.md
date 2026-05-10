@@ -12,8 +12,9 @@ py -3 bookmark_tool.py
 
 ## Download
 
-Release builds are published from GitHub Actions when a version tag such as `v1.0.0` is pushed:
+Release builds are published from GitHub Actions when a version tag such as `v1.2.0` is pushed:
 
+https://github.com/ifghjb169-hash/bookmark/releases
 https://github.com/secure-artifacts/bookmark/releases
 
 Download the `BookmarkExportTool-<version>.exe` asset from the latest release. Release assets are produced by the workflow in `.github/workflows/release.yml`; do not use manually uploaded files as official builds.
@@ -23,7 +24,7 @@ Download the `BookmarkExportTool-<version>.exe` asset from the latest release. R
 - Convert one or more Chrome bookmark HTML exports into separate CSV files.
 - Drag `.html` or `.htm` bookmark files directly into the app window to add them.
 - Scan Google Chrome or Microsoft Edge user profile folders such as `C:\Users\tenp\AppData\Local\Google\Chrome\User Data\Profile 3` or `C:\Users\tenp\AppData\Local\Microsoft\Edge\User Data\Default`.
-- Select which scanned Chrome profiles to export, then export one CSV per selected profile or merge selected profiles into one CSV with a `profile` column.
+- Select which scanned browser profiles to export, then export one CSV per selected profile or merge selected profiles into one CSV with a `profile` column.
 - Save output files to `Desktop\bookmarks` by default, or choose any other output folder from the top bar.
 - UI language dropdown: Chinese, English, Vietnamese, Burmese, Hindi, Filipino, Portuguese, Spanish.
 - Google Sheets tab accepts a Sheet link and an OAuth client JSON file, remembers both paths, can open the sheet in your browser, lets you choose Chrome or Edge profiles, then writes each selected profile into its own sheet tab.
@@ -47,11 +48,12 @@ Official release assets are built by GitHub Actions from a `v*` tag and include 
 With GitHub CLI installed, verify the provenance:
 
 ```powershell
-gh attestation verify .\BookmarkExportTool-v1.0.4.exe --repo secure-artifacts/bookmark
+gh attestation verify .\BookmarkExportTool-v1.2.0.exe --repo ifghjb169-hash/bookmark
+gh attestation verify .\BookmarkExportTool-v1.2.0.exe --repo secure-artifacts/bookmark
 ```
 
 You can also compare the downloaded file with the `.sha256` checksum published next to the EXE:
 
 ```powershell
-Get-FileHash .\BookmarkExportTool-v1.0.4.exe -Algorithm SHA256
+Get-FileHash .\BookmarkExportTool-v1.2.0.exe -Algorithm SHA256
 ```
