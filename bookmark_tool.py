@@ -1602,26 +1602,24 @@ class BookmarkApp(tk.Tk):
         panel = ttk.Frame(self.sheet_tab, style="Panel.TFrame", padding=14)
         panel.pack(fill="both", expand=True)
 
-        sheet_browser_row = ttk.Frame(panel, style="Panel.TFrame")
-        sheet_browser_row.pack(fill="x", pady=(0, 8))
-        self.sheet_browser_label = self.register("sheet_browser_label", ttk.Label(sheet_browser_row, style="Title.TLabel"), "browser")
+        sheet_source_row = ttk.Frame(panel, style="Panel.TFrame")
+        sheet_source_row.pack(fill="x", pady=(0, 10))
+        self.sheet_browser_label = self.register("sheet_browser_label", ttk.Label(sheet_source_row, style="Title.TLabel"), "browser")
         self.sheet_browser_label.pack(side="left", padx=(0, 8))
         self.sheet_browser_combo = ttk.Combobox(
-            sheet_browser_row,
+            sheet_source_row,
             textvariable=self.sheet_browser_var,
             values=self.browser_values(),
             state="readonly",
             width=24,
         )
-        self.sheet_browser_combo.pack(side="left")
+        self.sheet_browser_combo.pack(side="left", padx=(0, 18))
         self.sheet_browser_combo.bind("<<ComboboxSelected>>", self.on_sheet_browser_change)
 
-        self.sheet_base_label = self.register("sheet_base_label", ttk.Label(panel, style="Title.TLabel"), "chrome_base")
-        self.sheet_base_label.pack(anchor="w")
-        sheet_base_row = ttk.Frame(panel, style="Panel.TFrame")
-        sheet_base_row.pack(fill="x", pady=(4, 10))
-        ttk.Entry(sheet_base_row, textvariable=self.sheet_base_var).pack(side="left", fill="x", expand=True, padx=(0, 8))
-        self.sheet_base_browse = self.register("sheet_base_browse", ttk.Button(sheet_base_row, command=lambda: self.browse_folder(self.sheet_base_var)), "browse")
+        self.sheet_base_label = self.register("sheet_base_label", ttk.Label(sheet_source_row, style="Title.TLabel"), "chrome_base")
+        self.sheet_base_label.pack(side="left", padx=(0, 8))
+        ttk.Entry(sheet_source_row, textvariable=self.sheet_base_var).pack(side="left", fill="x", expand=True, padx=(0, 8))
+        self.sheet_base_browse = self.register("sheet_base_browse", ttk.Button(sheet_source_row, command=lambda: self.browse_folder(self.sheet_base_var)), "browse")
         self.sheet_base_browse.pack(side="left")
 
         credentials_row = ttk.Frame(panel, style="Panel.TFrame")
